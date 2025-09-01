@@ -1,0 +1,6 @@
+@sigur_emulation_HostAddress = http://localhost:5082
+
+GET {{sigur_emulation_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\sigur-emulation.props" />
+</Project>
