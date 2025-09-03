@@ -10,15 +10,15 @@ public static class PersonnelMapper
         return new PersonnelDto
         {
             Id = personnelModel.Id,
-            FirstName = personnelModel.FirstName,
-            LastName = personnelModel.LastName,
-            MiddleName = personnelModel.MiddleName,
+            Name = personnelModel.Name,
+            DepartmentId = personnelModel.DepartmentId,
+            DepartmentName = personnelModel.Department?.Name,
             PositionId = personnelModel.PositionId,
-            OrganizationId = personnelModel.OrganizationId,
-            StructuralUnitId = personnelModel.StructuralUnitId,
-            ExternalId = personnelModel.ExternalId,
-            TabulatedNumber = personnelModel.TabulatedNumber,
-            IsUnderground = personnelModel.IsUnderground
+            PositionName = personnelModel.Position?.Name,
+            Photo = personnelModel.Photo,
+            TabId =  personnelModel.TabId,
+            AreaId = personnelModel.AreaId,
+            MainDepartmentId = personnelModel.DepartmentId,
         };
     }
 }

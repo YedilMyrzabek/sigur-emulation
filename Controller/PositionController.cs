@@ -15,7 +15,7 @@ public class PositionController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<IActionResult> GetAll()
+    public async Task<IActionResult> GetAllPositions()
     {
         var positions = await _positionService.GetAllAsync();
         

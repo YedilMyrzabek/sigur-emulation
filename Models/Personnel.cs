@@ -2,17 +2,16 @@
 
 public class Personnel
 {
-    public Guid Id { get; set; } = Guid.NewGuid();
-    public string FirstName { get; set; }
-    public string LastName { get; set; }
-    public string MiddleName { get; set; }
-    public Guid? PositionId { get; set; }
+    public int Id { get; set; }
+    public string Name { get; set; }
+    public int? DepartmentId { get; set; }
+    public Department Department { get; set; }
+    public int? PositionId { get; set; }
     public Position Position { get; set; }
-    public Guid? OrganizationId { get; set; }
-    public Organization Organization { get; set; }
-    public Guid? StructuralUnitId { get; set; }
-    public StructuralUnit StructuralUnit { get; set; }
-    public int ExternalId { get; set; }
-    public string TabulatedNumber { get; set; }
-    public bool? IsUnderground { get; set; }
+    public string? Photo { get; set; }
+
+    public string TabId { get; set; }
+    public int? AreaId { get; set; }
+    public Area Area { get; set; }
+    public int? MainDepartmentId { get; set; }
 }

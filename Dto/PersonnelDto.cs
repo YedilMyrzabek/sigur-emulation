@@ -1,19 +1,18 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using sigur_emulation.Models;
 
 namespace sigur_emulation.Dto;
 
 public class PersonnelDto
 {
-    public Guid Id { get; set; }
-    public string FirstName { get; set; }
-    public string LastName { get; set; }
-    public string MiddleName { get; set; }
-    public Guid? PositionId { get; set; }
-    public Guid? OrganizationId { get; set; }
-    public Guid? StructuralUnitId { get; set; }
-    [Required]
-    public int ExternalId { get; set; }
-    [Required]
-    public string TabulatedNumber { get; set; }
-    public bool? IsUnderground { get; set; }
+    public int Id { get; set; }
+    public string Name { get; set; }
+    public int? DepartmentId { get; set; }
+    public string? DepartmentName { get; set; }
+    public int? PositionId { get; set; }
+    public string? PositionName { get; set; }
+    public string? Photo { get; set; }
+    public string? TabId { get; set; }
+    public int? AreaId { get; set; }
+    public int? MainDepartmentId { get; set; }
 }

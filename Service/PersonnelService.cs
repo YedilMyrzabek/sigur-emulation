@@ -16,9 +16,9 @@ public class PersonnelService : IPersonnelService
     public async Task<List<Personnel>> GetAllAsync()
     {
         return await _context.Personnels
+            .Include(p => p.Department)
+            .Include(p => p.Area)
             .Include(p => p.Position)
-            .Include(p => p.Organization)
-            .Include(p => p.StructuralUnit)
             .ToListAsync();
     }
 }

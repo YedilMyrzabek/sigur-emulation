@@ -5,17 +5,17 @@ using sigur_emulation.Models;
 
 namespace sigur_emulation.Repository;
 
-public class OrganizationService : IOrganizationService
+public class DepartmentService : IDepartmentService
 {
     private readonly ApplicationDbContext _context;
 
-    public OrganizationService(ApplicationDbContext context)
+    public DepartmentService(ApplicationDbContext context)
     {
         _context = context;
     }
     
-    public async Task<List<Organization>> GetAllAsync()
+    public async Task<List<Department>> GetAllAsync()
     {
-        return await _context.Organizations.ToListAsync();
+        return await _context.Departments.ToListAsync();
     }
 }

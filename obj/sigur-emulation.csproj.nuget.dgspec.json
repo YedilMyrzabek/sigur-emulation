@@ -1,31 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\yedil\\RiderProjects\\sigur-emulation\\sigur-emulation\\sigur-emulation.csproj": {}
+    "C:\\Users\\Yedil\\RiderProjects\\sigur-emulation\\sigur-emulation.csproj": {}
   },
   "projects": {
-    "C:\\Users\\yedil\\RiderProjects\\sigur-emulation\\sigur-emulation\\sigur-emulation.csproj": {
+    "C:\\Users\\Yedil\\RiderProjects\\sigur-emulation\\sigur-emulation.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\yedil\\RiderProjects\\sigur-emulation\\sigur-emulation\\sigur-emulation.csproj",
+        "projectUniqueName": "C:\\Users\\Yedil\\RiderProjects\\sigur-emulation\\sigur-emulation.csproj",
         "projectName": "sigur-emulation",
-        "projectPath": "C:\\Users\\yedil\\RiderProjects\\sigur-emulation\\sigur-emulation\\sigur-emulation.csproj",
-        "packagesPath": "C:\\Users\\yedil\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\yedil\\RiderProjects\\sigur-emulation\\sigur-emulation\\obj\\",
+        "projectPath": "C:\\Users\\Yedil\\RiderProjects\\sigur-emulation\\sigur-emulation.csproj",
+        "packagesPath": "C:\\Users\\Yedil\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Yedil\\RiderProjects\\sigur-emulation\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\yedil\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\Yedil\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -67,6 +61,10 @@
               "target": "Package",
               "version": "[9.0.4, )"
             },
+            "RabbitMQ.Client": {
+              "target": "Package",
+              "version": "[7.1.2, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.6.2, )"
@@ -91,7 +89,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.413/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Users\\Yedil\\.dotnet\\sdk\\8.0.413/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

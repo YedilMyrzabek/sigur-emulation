@@ -14,13 +14,9 @@ public class PersonnelController : ControllerBase
     {
         _personnelService = personnelService;
     }
-
-    /// <summary>
-    /// Gets list of all personnels
-    /// </summary>
-    /// <returns>List DTO personnels</returns>
+    
     [HttpGet]
-    public async Task<IActionResult> GetPersonnel()
+    public async Task<IActionResult> GetAllPersonnels()
     {
         var personnel = await _personnelService.GetAllAsync();
 

@@ -12,9 +12,11 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddControllers();
 builder.Services.AddScoped<IPositionService, PositionService>();
-builder.Services.AddScoped<IOrganizationService, OrganizationService>();
-builder.Services.AddScoped<IStructuralUnit, StructuralUnitService>();
+builder.Services.AddScoped<IDepartmentService, DepartmentService>();
+builder.Services.AddScoped<IAreaService, AreaService>();
 builder.Services.AddScoped<IPersonnelService, PersonnelService>();
+builder.Services.AddScoped<IAccessRuleService, AccessRuleService>();
+builder.Services.AddSingleton<IRabbitService, RabbitService>();
 builder.Services.AddDbContext<ApplicationDbContext>(option =>
 {
     option.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"));
@@ -22,7 +24,6 @@ builder.Services.AddDbContext<ApplicationDbContext>(option =>
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
