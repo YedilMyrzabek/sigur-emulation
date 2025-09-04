@@ -1,8 +1,7 @@
-﻿using System.Security.AccessControl;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using sigur_emulation.Data;
+using sigur_emulation.Dto;
 using sigur_emulation.Interfaces;
-using sigur_emulation.Models;
 using AccessRule = sigur_emulation.Models.AccessRule;
 
 namespace sigur_emulation.Repository;
@@ -10,7 +9,7 @@ namespace sigur_emulation.Repository;
 public class AccessRuleService : IAccessRuleService
 {
     private readonly ApplicationDbContext _context;
-
+    
     public AccessRuleService(ApplicationDbContext context)
     {
         _context = context;
@@ -61,11 +60,11 @@ public class AccessRuleService : IAccessRuleService
         }    
     }
 
-    public async Task<Dictionary<int, IEnumerable<int>>> GetEmployeeAccessAsync(int[] employeeIds)
+    public async Task<List<GetAccessRuleDto>> GetEmployeeAccessAsync(int[] employeeIds)
     {
-        var existingEmployeeIds = await _context.AccessRules
-            .Where(p => employeeIds.Contains(p.EmployeeId))
-            .Select(p => p.EmployeeId)
+        var existingEmployeeIds = await _context.Personnels
+            .Where(p => employeeIds.Contains(p.Id))
+            .Select(p => p.Id)
             .ToListAsync();
         
         var notFoundEmployees = employeeIds.Except(existingEmployeeIds).ToList();
@@ -76,17 +75,18 @@ public class AccessRuleService : IAccessRuleService
         
         var accessRules = await _context.AccessRules
             .Where(ar => employeeIds.Contains(ar.EmployeeId))
-            .Select(ar => new { ar.EmployeeId, ar.AccessRuleId })
+            .Select(ar => new {ar.AccessRuleId, ar.EmployeeId})
             .ToListAsync();
+
+        var result = accessRules
+            .GroupBy(ar => ar.EmployeeId)
+            .Select(g => new GetAccessRuleDto
+            {
+                EmployeeId = g.Key,
+                AccessruleIds = g.Select(x => x.AccessRuleId).ToList()
+            })
+            .ToList();
         
-        var result = employeeIds.ToDictionary(
-            employeeId => employeeId,
-            employeeId => accessRules
-                .Where(ar => ar.EmployeeId == employeeId)
-                .Select(ar => ar.AccessRuleId)
-                .AsEnumerable()
-        );
-            
         return result;
     }
 }

@@ -1,6 +1,4 @@
-﻿using System.Security.AccessControl;
-
-namespace sigur_emulation.Models;
+﻿namespace sigur_emulation.Models;
 
 public class AccessRule
 {
@@ -8,5 +6,4 @@ public class AccessRule
     public int EmployeeId { get; set; }
     public Personnel Employee { get; set; }
     public int AccessRuleId { get; set; }
-    
 }

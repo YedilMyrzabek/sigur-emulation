@@ -2,8 +2,8 @@
 
 namespace sigur_emulation.Dto;
 
-public class AccessRuleDto
+public class GetAccessRuleDto
 {
     [Required] public int EmployeeId { get; set; }
-    [Required] public int AccessruleId { get; set; }
+    [Required] public List<int> AccessruleIds { get; set; }
 }

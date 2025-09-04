@@ -6,17 +6,17 @@ namespace sigur_emulation.Controller;
 
 [Route("/api/v1/bindings")]
 [ApiController]
-public class AccessRoleController : ControllerBase
+public class AccessRuleController : ControllerBase
 {
     private readonly IAccessRuleService _accessRuleService;
 
-    public AccessRoleController(IAccessRuleService accessRuleService)
+    public AccessRuleController(IAccessRuleService accessRuleService)
     {
         _accessRuleService = accessRuleService;
     }
 
     [HttpPost("employees-accessrules")]
-    public async Task<IActionResult> CreateAccessRole([FromBody] AccessRuleDto dto)
+    public async Task<IActionResult> CreateAccessRole([FromBody] CreateAccessRuleDto dto)
     {
         if (dto.EmployeeId <= 0 || dto.AccessruleId <= 0)
         {
@@ -28,7 +28,7 @@ public class AccessRoleController : ControllerBase
     }
 
     [HttpDelete("employees-accessrules/delete")]
-    public async Task<IActionResult> DeleteAccessRole([FromBody] AccessRuleDto dto)
+    public async Task<IActionResult> DeleteAccessRole([FromBody] CreateAccessRuleDto dto)
     {
         if (dto.EmployeeId <= 0 || dto.AccessruleId <= 0)
         {
@@ -43,12 +43,6 @@ public class AccessRoleController : ControllerBase
     public async Task<IActionResult> GetEmployeeAccessAsync([FromQuery] int[] employeeIds)
     {
         var accessRules = await _accessRuleService.GetEmployeeAccessAsync(employeeIds);
-        
-        return Ok(new
-        {
-            AccessrulesIds = accessRules.ToDictionary(
-            ac => ac.Key,
-            ac => ac.Value.ToArray())
-        });
+        return Ok(accessRules);
     }
 }
