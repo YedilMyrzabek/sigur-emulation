@@ -16,6 +16,7 @@ builder.Services.AddScoped<IDepartmentService, DepartmentService>();
 builder.Services.AddScoped<IAreaService, AreaService>();
 builder.Services.AddScoped<IPersonnelService, PersonnelService>();
 builder.Services.AddScoped<IAccessRuleService, AccessRuleService>();
+builder.Services.AddScoped<ICardService, CardService>();
 builder.Services.AddSingleton<IRabbitService, RabbitService>();
 builder.Services.AddDbContext<ApplicationDbContext>(option =>
 {

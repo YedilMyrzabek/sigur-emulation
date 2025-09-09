@@ -1,6 +1,8 @@
 ﻿using System.Text;
+using System.Text.Json;
 using RabbitMQ.Client;
 using sigur_emulation.Interfaces;
+using sigur_emulation.Models;
 
 namespace sigur_emulation.Repository;
 
@@ -29,7 +31,7 @@ public class RabbitService : IRabbitService
         };
     }
     
-    public async Task SendMessage(string message)
+    public async Task SendMessage<T>(T message)
     {
         await using var connection = await _factory.CreateConnectionAsync();
         await using var channel = await connection.CreateChannelAsync();
@@ -38,11 +40,12 @@ public class RabbitService : IRabbitService
             queue: _queueName,
             durable: false,
             exclusive: false,
-            autoDelete: false,
+            autoDelete: false,  
             arguments: null
         );
         
-        var body = Encoding.UTF8.GetBytes(message);
+        var json = JsonSerializer.Serialize(message);
+        var body = Encoding.UTF8.GetBytes(json);
         
         await channel.BasicPublishAsync(
             exchange: "",

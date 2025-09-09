@@ -1,6 +1,8 @@
-﻿namespace sigur_emulation.Interfaces;
+﻿using sigur_emulation.Models;
+
+namespace sigur_emulation.Interfaces;
 
 public interface IRabbitService
 {
-    Task SendMessage(string message);
+    Task SendMessage<T>(T message);
 }

@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Text.Json;
+using Microsoft.AspNetCore.Mvc;
 using sigur_emulation.Interfaces;
+using sigur_emulation.Models;
 
 namespace sigur_emulation.Controller;
 
@@ -15,7 +17,7 @@ public class RabbitController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> Send([FromBody] string message)
+    public async Task<IActionResult> Send([FromBody] AlcoMessage message)
     {
         await _rabbitService.SendMessage(message);
         return Ok("Message sent");

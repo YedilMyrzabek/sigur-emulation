@@ -17,7 +17,8 @@ public class ApplicationDbContext : DbContext
     public DbSet<Area> Areas { get; set; }
     public DbSet<Personnel> Personnels { get; set; }
     public DbSet<AccessRule> AccessRules { get; set; }
-
+    public DbSet<Card> Cards { get; set; }
+    
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Department>()
@@ -68,5 +69,22 @@ public class ApplicationDbContext : DbContext
         modelBuilder.Entity<AccessRule>()
             .HasIndex(ar => new { ar.EmployeeId, ar.AccessRuleId })
             .IsUnique();
+        
+        modelBuilder.Entity<Card>()
+            .HasOne(c => c.Holder)
+            .WithMany()
+            .HasForeignKey(f => f.CardHolderId);
+        
+        modelBuilder.Entity<Card>()
+            .HasIndex(c => c.Id)
+            .IsUnique();
+
+        modelBuilder.Entity<CardHolder>()
+            .HasKey(c => c.HolderId);
+
+        modelBuilder.Entity<CardHolder>()
+            .HasOne(ch => ch.Personnel)
+            .WithMany()
+            .HasForeignKey(ch => ch.HolderId);
     }
 }
