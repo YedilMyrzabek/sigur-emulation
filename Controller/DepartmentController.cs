@@ -4,7 +4,7 @@ using sigur_emulation.Mappers;
 
 namespace sigur_emulation.Controller;
 
-[Route("api/[controller]")]
+[Route("/api/v1")]
 public class DepartmentController : ControllerBase
 {
     private readonly IDepartmentService _departmentService;
@@ -14,7 +14,7 @@ public class DepartmentController : ControllerBase
         _departmentService = departmentService;
     }
 
-    [HttpGet]
+    [HttpGet("departments")]
     public async Task<IActionResult> GetAllDepartments()
     {
         var organizatoins = await _departmentService.GetAllAsync();

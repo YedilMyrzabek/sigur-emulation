@@ -6,7 +6,7 @@ using sigur_emulation.Mappers;
 namespace sigur_emulation.Controller;
 
 [ApiController]
-[Route("api/[controller]")]
+[Route("/api/v1")]
 public class CardController : ControllerBase
 {
     private readonly ICardService _cardService;
@@ -16,7 +16,7 @@ public class CardController : ControllerBase
         _cardService = cardService;
     }
 
-    [HttpGet]
+    [HttpGet("cards")]
     public async Task<IActionResult> GetAllCards()
     {
         var cards = await _cardService.GetAllAsync();

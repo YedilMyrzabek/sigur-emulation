@@ -3,7 +3,7 @@ using sigur_emulation.Interfaces;
 
 namespace sigur_emulation.Controller;
 
-[Route("api/[controller]")]
+[Route("/api/v1")]
 [ApiController]
 public class PositionController : ControllerBase
 {
@@ -14,7 +14,7 @@ public class PositionController : ControllerBase
         _positionService = positionService;
     }
 
-    [HttpGet]
+    [HttpGet("positions")]
     public async Task<IActionResult> GetAllPositions()
     {
         var positions = await _positionService.GetAllAsync();

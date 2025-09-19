@@ -4,7 +4,7 @@ using sigur_emulation.Mappers;
 
 namespace sigur_emulation.Controller;
 
-[Route("api/[controller]")]
+[Route("/api/v1")]
 [ApiController]
 public class PersonnelController : ControllerBase
 {
@@ -15,7 +15,7 @@ public class PersonnelController : ControllerBase
         _personnelService = personnelService;
     }
     
-    [HttpGet]
+    [HttpGet("employees")]
     public async Task<IActionResult> GetAllPersonnels()
     {
         var personnel = await _personnelService.GetAllAsync();

@@ -4,7 +4,7 @@ using sigur_emulation.Mappers;
 
 namespace sigur_emulation.Controller;
 
-[Route("api/[controller]")]
+[Route("api")]
 [ApiController]
 public class AreaController : ControllerBase
 {
@@ -15,7 +15,7 @@ public class AreaController : ControllerBase
         _areaService = areaService;
     }
 
-    [HttpGet]
+    [HttpGet("area")]
     public async Task<IActionResult> GetAllAreas()
     {
         var structuralUnits = await _areaService.GetAllAsync();

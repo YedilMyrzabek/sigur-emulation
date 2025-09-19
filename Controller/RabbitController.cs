@@ -5,7 +5,7 @@ using sigur_emulation.Models;
 
 namespace sigur_emulation.Controller;
 
-[Route("api/[controller]")]
+[Route("api/v1")]
 [ApiController]
 public class RabbitController : ControllerBase
 {
@@ -16,7 +16,7 @@ public class RabbitController : ControllerBase
         _rabbitService = rabbitService;
     }
 
-    [HttpPost]
+    [HttpPost("alco-message")]
     public async Task<IActionResult> Send([FromBody] AlcoMessage message)
     {
         await _rabbitService.SendMessage(message);

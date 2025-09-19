@@ -20,7 +20,7 @@ public class AccessRuleController : ControllerBase
     {
         if (dto.EmployeeId <= 0 || dto.AccessruleId <= 0)
         {
-            return BadRequest("Employee Id or Role Id is invalid");
+            return BadRequest("EmployeeId or ROle invalid");
         }
         
         await _accessRuleService.CreateAccessRule(dto.EmployeeId, dto.AccessruleId); 
@@ -32,7 +32,7 @@ public class AccessRuleController : ControllerBase
     {
         if (dto.EmployeeId <= 0 || dto.AccessruleId <= 0)
         {
-            return BadRequest("Employee Id or Role Id is invalid");
+            return BadRequest("EmployeeId or Role invalid");
         }
         
         await _accessRuleService.DeleteAccessRule(dto.EmployeeId, dto.AccessruleId);

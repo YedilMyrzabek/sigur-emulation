@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("sigur-emulation")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+eccf738e5c0b6bb48bb0ae4d247b542df1e06942")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+01294eeb206d0072de2881d313fb3c13895d4909")]
 [assembly: System.Reflection.AssemblyProductAttribute("sigur-emulation")]
 [assembly: System.Reflection.AssemblyTitleAttribute("sigur-emulation")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
