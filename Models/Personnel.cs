@@ -11,7 +11,7 @@ public class Personnel
     public string? Photo { get; set; }
 
     public string TabId { get; set; }
-    public int? AreaId { get; set; }
+    public string? AreaId { get; set; }
     public Area Area { get; set; }
     public int? MainDepartmentId { get; set; }
 }

@@ -33,7 +33,10 @@ public class ApplicationDbContext : DbContext
         modelBuilder.Entity<Department>()
             .HasIndex(o => o.Id)
             .IsUnique();
-
+        
+        modelBuilder.Entity<Area>()
+            .HasKey(a => a.Id);
+        
         modelBuilder.Entity<Area>()
             .HasIndex(st => st.Id)
             .IsUnique();

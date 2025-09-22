@@ -13,6 +13,6 @@ public class PersonnelDto
     public string? PositionName { get; set; }
     public string? Photo { get; set; }
     public string? TabId { get; set; }
-    public int? AreaId { get; set; }
+    public string? AreaId { get; set; }
     public int? MainDepartmentId { get; set; }
 }
