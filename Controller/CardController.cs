@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using sigur_emulation.Interfaces;
 using sigur_emulation.Mappers;
+using sigur_emulation.Models;
 
 namespace sigur_emulation.Controller;
 
@@ -17,13 +18,13 @@ public class CardController : ControllerBase
     }
 
     [HttpGet("cards")]
-    public async Task<IActionResult> GetAllCards()
+    public async Task<IActionResult> GetAllCards([FromQuery] Pagination query)
     {
-        var cards = await _cardService.GetAllAsync();
-
-        if (cards == null)
-            return NotFound("Card not found!");
-
+        var limit = query.Limit ?? 100; 
+        var offset = query.Offset ?? 0; 
+        
+        var cards = await _cardService.GetAllAsync(limit, offset);
+        
         var cardDto = cards.Select(c => c.ToCardDto());
 
         return Ok(cardDto);

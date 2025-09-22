@@ -4,5 +4,5 @@ namespace sigur_emulation.Interfaces;
 
 public interface IDepartmentService
 {
-    Task<List<Department>> GetAllAsync();
+    Task<List<Department>> GetAllAsync(int limit, int offset);
 }

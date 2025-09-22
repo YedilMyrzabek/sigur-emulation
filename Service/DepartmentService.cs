@@ -14,8 +14,11 @@ public class DepartmentService : IDepartmentService
         _context = context;
     }
     
-    public async Task<List<Department>> GetAllAsync()
+    public async Task<List<Department>> GetAllAsync(int limit, int offset)
     {
-        return await _context.Departments.ToListAsync();
+        return await _context.Departments
+            .Skip(offset * limit)
+            .Take(limit)
+            .ToListAsync();
     }
 }

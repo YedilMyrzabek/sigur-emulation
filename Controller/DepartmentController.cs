@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using sigur_emulation.Interfaces;
 using sigur_emulation.Mappers;
+using sigur_emulation.Models;
 
 namespace sigur_emulation.Controller;
 
@@ -15,13 +16,13 @@ public class DepartmentController : ControllerBase
     }
 
     [HttpGet("departments")]
-    public async Task<IActionResult> GetAllDepartments()
+    public async Task<IActionResult> GetAllDepartments([FromQuery] Pagination query)
     {
-        var organizatoins = await _departmentService.GetAllAsync();
-
-        if (organizatoins == null)
-            return NotFound("Organization not found!!!!!");
+        var limit = query.Limit ?? 5; 
+        var offset = query.Offset ?? 0; 
         
-        return Ok(organizatoins);
+        var departments = await _departmentService.GetAllAsync(limit, offset); 
+        
+        return Ok(departments);
     }
 }

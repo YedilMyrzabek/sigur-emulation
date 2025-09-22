@@ -5,5 +5,5 @@ namespace sigur_emulation.Interfaces;
 
 public interface ICardService
 {
-    Task<List<Card>> GetAllAsync();
+    Task<List<Card>> GetAllAsync(int offset, int limit);
 }
