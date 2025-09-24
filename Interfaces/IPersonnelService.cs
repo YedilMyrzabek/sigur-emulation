@@ -4,5 +4,5 @@ namespace sigur_emulation.Interfaces;
 
 public interface IPersonnelService
 {
-    Task<List<Personnel>> GetAllAsync();
+    Task<List<Personnel>> GetAllAsync(int limit, int offset);
 }

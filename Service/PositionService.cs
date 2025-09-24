@@ -13,8 +13,11 @@ public class PositionService : IPositionService
     {
         _context = context;
     }
-    public async Task<List<Position>> GetAllAsync()
+    public async Task<List<Position>> GetAllAsync(int   limit, int offset)
     {
-        return await _context.Positions.ToListAsync();
+        return await _context.Positions
+            .Skip(offset)
+            .Take(limit)
+            .ToListAsync();
     }
 }

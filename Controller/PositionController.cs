@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using sigur_emulation.Interfaces;
+using sigur_emulation.Models;
 
 namespace sigur_emulation.Controller;
 
@@ -15,12 +16,12 @@ public class PositionController : ControllerBase
     }
 
     [HttpGet("positions")]
-    public async Task<IActionResult> GetAllPositions()
+    public async Task<IActionResult> GetAllPositions([FromQuery] Pagination query)
     {
-        var positions = await _positionService.GetAllAsync();
+        var limit = query.Limit ?? 100; 
+        var offset = query.Offset ?? 0; 
         
-        if (positions == null)
-            return NotFound("Positions not found!!!!!");
+        var positions = await _positionService.GetAllAsync(limit, offset);
 
         return Ok(positions);
     }

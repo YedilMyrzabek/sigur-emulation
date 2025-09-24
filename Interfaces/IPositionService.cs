@@ -4,5 +4,5 @@ namespace sigur_emulation.Interfaces;
 
 public interface IPositionService
 {
-    Task<List<Position>> GetAllAsync();
+    Task<List<Position>> GetAllAsync(int  limit, int offset);
 }

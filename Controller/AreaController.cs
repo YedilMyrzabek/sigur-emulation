@@ -16,12 +16,9 @@ public class AreaController : ControllerBase
     }
 
     [HttpGet("area")]
-    public async Task<IActionResult> GetAllAreas()
+    public async Task<IActionResult> GetAllAreas([FromQuery] int  limit, int offset)
     {
-        var structuralUnits = await _areaService.GetAllAsync();
-        
-        if (structuralUnits == null)
-            return NotFound("StructuralUnits not found!!!!!");
+        var structuralUnits = await _areaService.GetAllAsync(limit, offset);
         
         return Ok(structuralUnits);
     }

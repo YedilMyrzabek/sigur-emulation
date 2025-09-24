@@ -13,12 +13,14 @@ public class PersonnelService : IPersonnelService
     {
         _context = context;
     }
-    public async Task<List<Personnel>> GetAllAsync()
+    public async Task<List<Personnel>> GetAllAsync(int limit, int offset)
     {
         return await _context.Personnels
             .Include(p => p.Department)
             .Include(p => p.Area)
             .Include(p => p.Position)
+            .Skip(offset)
+            .Take(limit)
             .ToListAsync();
     }
 }

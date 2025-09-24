@@ -14,11 +14,11 @@ public class CardService : ICardService
         _context = context;
     }
     
-    public async Task<List<Card>> GetAllAsync(int offset, int limit)
+    public async Task<List<Card>> GetAllAsync(int limit, int offset)
     {
         return await _context.Cards
             .Include(c => c.Holder)
-            .Skip(offset * limit)
+            .Skip(offset)
             .Take(limit)
             .ToListAsync();
     }

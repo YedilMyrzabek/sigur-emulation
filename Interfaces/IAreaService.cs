@@ -4,5 +4,5 @@ namespace sigur_emulation.Interfaces;
 
 public interface IAreaService
 {
-    Task<List<Area>> GetAllAsync();
+    Task<List<Area>> GetAllAsync(int  limit, int offset);
 }

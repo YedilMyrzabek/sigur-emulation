@@ -16,8 +16,11 @@ public class AreaService : IAreaService
     }
 
     [HttpGet]
-    public async Task<List<Area>> GetAllAsync()
+    public async Task<List<Area>> GetAllAsync(int limit, int offset)
     {
-        return await _context.Areas.ToListAsync();
+        return await _context.Areas
+            .Skip(offset)
+            .Take(limit)
+            .ToListAsync();
     }
 }
