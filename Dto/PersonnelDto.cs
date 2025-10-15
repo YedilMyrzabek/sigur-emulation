@@ -14,5 +14,5 @@ public class PersonnelDto
     public string? Photo { get; set; }
     public string? TabId { get; set; }
     public string? AreaId { get; set; }
-    public int? MainDepartmentId { get; set; }
+    public string? MainDepartmentId { get; set; }
 }

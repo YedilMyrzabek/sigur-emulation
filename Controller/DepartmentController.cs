@@ -18,7 +18,7 @@ public class DepartmentController : ControllerBase
     [HttpGet("departments")]
     public async Task<IActionResult> GetAllDepartments([FromQuery] Pagination query)
     {
-        var limit = query.Limit ?? 5; 
+        var limit = query.Limit ?? 100; 
         var offset = query.Offset ?? 0; 
         
         var departments = await _departmentService.GetAllAsync(limit, offset); 

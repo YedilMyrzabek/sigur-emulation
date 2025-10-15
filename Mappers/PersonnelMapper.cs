@@ -18,7 +18,7 @@ public static class PersonnelMapper
             Photo = personnelModel.Photo,
             TabId =  personnelModel.TabId,
             AreaId = personnelModel.AreaId,
-            MainDepartmentId = personnelModel.DepartmentId,
+            MainDepartmentId = personnelModel.MainDepartmentId,
         };
     }
 }

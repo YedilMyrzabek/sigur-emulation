@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using sigur_emulation.Data;
+using sigur_emulation.Dto;
 using sigur_emulation.Interfaces;
 using sigur_emulation.Models;
 
@@ -21,5 +22,34 @@ public class CardService : ICardService
             .Skip(offset)
             .Take(limit)
             .ToListAsync();
+    }
+    
+    public async Task<IEnumerable<Card>> GetEmployeeCardAsync(
+        List<int> employeeIds, 
+        List<int>? cardIds, 
+        int limit, 
+        int offset)
+    {
+
+        var query = _context.Cards
+            .Include(c => c.Holder)
+            .AsQueryable();
+
+        if (employeeIds is { Count: > 0 })
+        {
+            query = query.Where(c => c.Holder != null && employeeIds.Contains(c.Holder.HolderId));
+        }
+
+        if (cardIds is { Count: > 0 })
+        {
+            query = query.Where(c => cardIds.Contains(c.Id));
+        }
+        
+        var result  = await query
+            .Skip(offset)
+            .Take(limit)
+            .ToListAsync();
+        
+        return result;
     }
 }

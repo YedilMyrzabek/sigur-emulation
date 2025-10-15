@@ -29,4 +29,20 @@ public class CardController : ControllerBase
 
         return Ok(cardDto);
     }
+
+    [HttpGet("bindings/employees-cards")]
+    public async Task<IActionResult> GetEmployeeCard(
+        [FromQuery(Name = "employeeId")] List<int> employeeIds,
+        [FromQuery(Name = "cardId")] List<int>? cardIds,
+        [FromQuery] Pagination query)
+    {
+        var limit = query.Limit ?? 100; 
+        var offset = query.Offset ?? 0;
+        
+        var cards = await _cardService.GetEmployeeCardAsync(employeeIds, cardIds, limit, offset);
+        
+        var cardDto = cards.Select(c => c.ToEmployeeCardDto());
+
+        return Ok(cardDto);
+    }
 }

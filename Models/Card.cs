@@ -1,4 +1,6 @@
-﻿namespace sigur_emulation.Models;
+﻿using sigur_emulation.Models.Enum;
+
+namespace sigur_emulation.Models;
 
 public class Card
 {
@@ -6,7 +8,7 @@ public class Card
     public string Name { get; set; }
     public string Value { get; set; }
     public string FormattedValue { get; set; }
-    public string Format { get; set; }
+    public CardFormat? Format { get; set; }
     public int? CardHolderId { get; set; }
     public CardHolder? Holder { get; set; }
     public bool GuestApplicable { get; set; }

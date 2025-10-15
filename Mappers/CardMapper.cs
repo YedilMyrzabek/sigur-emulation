@@ -13,10 +13,22 @@ public static class CardMapper
             Name = cardModel.Name,
             Value = cardModel.Value,
             FormattedValue = cardModel.FormattedValue,
-            Format = cardModel.Format,
+            Format = cardModel.Format?.ToString(),
             Holder = cardModel.Holder,
             GuestApplicable = cardModel.GuestApplicable,
             MfUid = cardModel.MfUid
+        };
+    }
+
+    public static EmployeeCardDto ToEmployeeCardDto(this Card cardModel)
+    {
+        return new EmployeeCardDto()
+        {
+            EmployeeId = cardModel.Holder!.HolderId,
+            CardId = cardModel.Id,
+            Format = cardModel.Format?.ToString(),
+            StartDate = null,
+            ExpirationDate = null
         };
     }
 }
